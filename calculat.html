@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <style type="text/css">
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    background-color: #0f0101;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#display {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 10px;
+    border: none;
+    background-color: #b7d9e4;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f3f0ee;
+}
+
+button:hover {
+    background-color: #d0d0d0;
+}
+
+    </style>
+    <script type="text/javascript">
+        function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+function deleteLast() {
+    let display = document.getElementById('display').value;
+    document.getElementById('display').value = display.slice(0, -1);
+}
+
+function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
+
+function calculate() {
+    let display = document.getElementById('display').value;
+    try {
+        document.getElementById('display').value = eval(display);
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
+}
+
+    </script>
+
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="clearDisplay()" style="background-color: orange;">C</button>
+            <button onclick="deleteLast()" style="background-color: orange;">DEL</button>
+            <button onclick="appendToDisplay('%')" style="background-color: orange;">%</button>
+            <button onclick="appendToDisplay('/')" style="background-color: orange;">/</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('*')" style="background-color: orange;">*</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')" style="background-color: orange;">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('+')" style="background-color: orange;">+</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()" style="background-color: orange;">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
